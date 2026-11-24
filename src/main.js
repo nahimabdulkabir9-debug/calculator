@@ -106,6 +106,47 @@ export function initCalculator(root = document) {
     }, 1600);
   }
 
+  const installButton = app.querySelector('[data-install]');
+  let deferredInstallPrompt = null;
+
+  function isStandalone() {
+    return (
+      (typeof window.matchMedia === 'function' &&
+        window.matchMedia('(display-mode: standalone)').matches) ||
+      window.navigator.standalone === true
+    );
+  }
+
+  function syncInstallButton() {
+    if (!installButton) return;
+    installButton.hidden = !deferredInstallPrompt || isStandalone();
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    syncInstallButton();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    syncInstallButton();
+    showToast('Calculator installed');
+  });
+
+  installButton?.addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    try {
+      await deferredInstallPrompt.userChoice;
+    } finally {
+      deferredInstallPrompt = null;
+      syncInstallButton();
+    }
+  });
+
+  syncInstallButton();
+
   async function copyResult() {
     const text = calc.error ? 'Error' : calc.entry;
     try {

@@ -107,6 +107,41 @@ body {
   letter-spacing: 0.01em;
 }
 
+.app__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.install-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 159, 67, 0.35);
+  background: rgba(255, 159, 67, 0.12);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.install-btn:hover {
+  background: rgba(255, 159, 67, 0.22);
+}
+
+.install-btn:active {
+  transform: scale(0.97);
+}
+
+.install-btn[hidden] {
+  display: none;
+}
+
 .icon-btn {
   display: grid;
   place-items: center;

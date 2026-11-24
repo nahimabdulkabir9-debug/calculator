@@ -9,6 +9,12 @@
       content="A modern calculator with scientific functions, memory, history and keyboard support."
     />
     <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Calculator" />
   </head>
   <body>
     <main class="app" data-calculator>
@@ -17,14 +23,26 @@
           <span class="brand__mark" aria-hidden="true">&Sigma;</span>
           <h1 class="brand__name">Calculator</h1>
         </div>
-        <button
-          class="icon-btn"
-          type="button"
-          data-action="toggle-theme"
-          aria-label="Switch to light theme"
-        >
-          <span data-theme-icon aria-hidden="true">&#9728;</span>
-        </button>
+        <div class="app__actions">
+          <button
+            class="install-btn"
+            type="button"
+            data-install
+            aria-label="Install Calculator as an app"
+            hidden
+          >
+            <span aria-hidden="true">&#8595;</span>
+            <span>Install app</span>
+          </button>
+          <button
+            class="icon-btn"
+            type="button"
+            data-action="toggle-theme"
+            aria-label="Switch to light theme"
+          >
+            <span data-theme-icon aria-hidden="true">&#9728;</span>
+          </button>
+        </div>
       </header>
 
       <div class="layout">

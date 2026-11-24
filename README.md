@@ -15,8 +15,20 @@ dependencies, no framework.
 - Full keyboard support
 - Light and dark themes, remembered in `localStorage`
 - Copy result to clipboard
+- Installable PWA with offline support
 - Accessible: semantic buttons, focus rings, `aria-live` results
 - Responsive layout for desktop and mobile
+
+## Install as an app
+
+The app is a Progressive Web App. Open the live demo and install it:
+
+- **Chrome / Edge (desktop):** click **Install app** in the header, or the install
+  icon in the address bar.
+- **Android (Chrome):** menu → **Install app** / **Add to Home screen**.
+- **iOS (Safari):** Share → **Add to Home Screen**.
+
+Once installed it opens in its own standalone window and works offline.
 
 ## Getting started
 
@@ -47,10 +59,13 @@ The suite has three layers:
 ```
 index.html          Markup and keypad
 styles/main.css     Theme tokens, layout, responsive rules
+public/             Manifest icons, favicon (copied as-is at build)
+scripts/            Icon generation script (System.Drawing)
+.github/            GitHub Pages deployment workflow
 src/calculator.js   Pure state machine (no DOM)
 src/format.js       Number precision and display formatting
 src/keyboard.js     Keyboard mapping (pure)
-src/main.js         DOM wiring, theme, history, clipboard, toast
+src/main.js         DOM wiring, theme, history, clipboard, install prompt
 tests/              Vitest unit and integration suites
 ```
 
