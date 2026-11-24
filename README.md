@@ -3,6 +3,8 @@
 A modern calculator web app built with vanilla JavaScript and Vite. No production
 dependencies, no framework.
 
+**Live demo:** https://nahimabdulkabir9-debug.github.io/calculator/
+
 ## Features
 
 - Four-function arithmetic with left-to-right chaining and repeat `=`
