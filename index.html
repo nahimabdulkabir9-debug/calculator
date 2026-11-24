@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <meta
+      name="description"
+      content="A modern calculator with scientific functions, memory, history and keyboard support."
+    />
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <main class="app" data-calculator>
+      <header class="app__header">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">&Sigma;</span>
+          <h1 class="brand__name">Calculator</h1>
+        </div>
+        <button
+          class="icon-btn"
+          type="button"
+          data-action="toggle-theme"
+          aria-label="Switch to light theme"
+        >
+          <span data-theme-icon aria-hidden="true">&#9728;</span>
+        </button>
+      </header>
+
+      <div class="layout">
+        <section class="calculator" aria-label="Calculator">
+          <div class="display">
+            <div class="display__meta">
+              <span class="badge" data-memory-badge hidden>M</span>
+              <span class="display__expression" data-expression></span>
+            </div>
+            <div class="display__row">
+              <output class="display__output" data-output aria-live="polite">0</output>
+              <button
+                class="icon-btn icon-btn--ghost"
+                type="button"
+                data-action="copy"
+                aria-label="Copy result"
+                title="Copy result"
+              >
+                &#10697;
+              </button>
+            </div>
+          </div>
+
+          <div class="keypad" data-keypad>
+            <button class="key key--fn" type="button" data-action="unary" data-value="sqrt" aria-label="Square root">&radic;</button>
+            <button class="key key--fn" type="button" data-action="unary" data-value="square" aria-label="Square">x&sup2;</button>
+            <button class="key key--fn" type="button" data-action="unary" data-value="reciprocal" aria-label="Reciprocal">1/x</button>
+            <button class="key key--fn" type="button" data-action="percent" aria-label="Percent">%</button>
+
+            <button class="key key--fn" type="button" data-action="unary" data-value="sin" aria-label="Sine">sin</button>
+            <button class="key key--fn" type="button" data-action="unary" data-value="cos" aria-label="Cosine">cos</button>
+            <button class="key key--fn" type="button" data-action="unary" data-value="tan" aria-label="Tangent">tan</button>
+            <button class="key key--fn key--angle" type="button" data-action="angle" data-angle aria-label="Angle mode degrees. Switch to radians.">DEG</button>
+
+            <button class="key key--fn" type="button" data-action="memory" data-value="clear" aria-label="Memory clear">MC</button>
+            <button class="key key--fn" type="button" data-action="memory" data-value="recall" aria-label="Memory recall">MR</button>
+            <button class="key key--fn" type="button" data-action="memory" data-value="add" aria-label="Memory add">M+</button>
+            <button class="key key--fn" type="button" data-action="memory" data-value="subtract" aria-label="Memory subtract">M&minus;</button>
+
+            <button class="key key--clear" type="button" data-action="clear-all" aria-label="Clear all">AC</button>
+            <button class="key key--clear" type="button" data-action="clear-entry" aria-label="Clear entry">C</button>
+            <button class="key key--util" type="button" data-action="backspace" aria-label="Backspace">&#9003;</button>
+            <button class="key key--op" type="button" data-action="operator" data-value="/" aria-label="Divide">&divide;</button>
+
+            <button class="key" type="button" data-action="digit" data-value="7">7</button>
+            <button class="key" type="button" data-action="digit" data-value="8">8</button>
+            <button class="key" type="button" data-action="digit" data-value="9">9</button>
+            <button class="key key--op" type="button" data-action="operator" data-value="*" aria-label="Multiply">&times;</button>
+
+            <button class="key" type="button" data-action="digit" data-value="4">4</button>
+            <button class="key" type="button" data-action="digit" data-value="5">5</button>
+            <button class="key" type="button" data-action="digit" data-value="6">6</button>
+            <button class="key key--op" type="button" data-action="operator" data-value="-" aria-label="Subtract">&minus;</button>
+
+            <button class="key" type="button" data-action="digit" data-value="1">1</button>
+            <button class="key" type="button" data-action="digit" data-value="2">2</button>
+            <button class="key" type="button" data-action="digit" data-value="3">3</button>
+            <button class="key key--op" type="button" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+            <button class="key key--util" type="button" data-action="sign" aria-label="Toggle sign">&plusmn;</button>
+            <button class="key" type="button" data-action="digit" data-value="0">0</button>
+            <button class="key" type="button" data-action="decimal" aria-label="Decimal point">.</button>
+            <button class="key key--equals" type="button" data-action="equals" aria-label="Equals">=</button>
+          </div>
+        </section>
+
+        <aside class="history" aria-label="Calculation history">
+          <div class="history__header">
+            <h2 class="history__title">History</h2>
+            <button class="text-btn" type="button" data-action="clear-history">Clear</button>
+          </div>
+          <ol class="history__list" data-history></ol>
+          <p class="history__empty" data-history-empty>No calculations yet.</p>
+        </aside>
+      </div>
+    </main>
+
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
